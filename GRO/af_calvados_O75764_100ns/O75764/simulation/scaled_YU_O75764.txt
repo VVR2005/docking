@@ -1,0 +1,4 @@
+i+offset+1, j+offset+1, comp.bondscale[i,j]
+202 204 0.9463
+202 254 0.9463
+326 329 0.6604

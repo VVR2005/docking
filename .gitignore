@@ -1,0 +1,36 @@
+# Large binary files - MD trajectories
+*.xtc
+*.trr
+*.edr
+*.cpt
+*.chk
+*.dcd
+*.nc
+
+# ChimeraX sessions (large)
+*.cxs
+
+# Zip archives
+*.zip
+
+# Videos
+*.mp4
+*.avi
+
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+
+# Python
+*.pkl
+*.npy
+__pycache__/
+
+# Frame directories
+frames_*/
+frames/
+
+# Large PDB trajectories (keep small structure PDBs)
+GRO/*/trajectory.pdb

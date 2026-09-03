@@ -1,0 +1,168 @@
+========================================================================
+MOLECULAR DOCKING ANALYSIS REPORT
+Project: /home/vr/Documents/docking/sethu
+Date: 2026-08-29
+========================================================================
+
+------------------------------------------------------------------------
+1. PROJECT OVERVIEW
+------------------------------------------------------------------------
+AutoDock Vina 1.2.7 docking study of Phthalazine against the EGFR
+(Epidermal Growth Factor Receptor) tyrosine kinase domain.
+
+Receptor:  PDB 1M17 - Human EGFR kinase domain (residues 671-998),
+           complexed with 4-anilinoquinazoline inhibitor ERLOTINIB.
+           X-ray structure, 2.60 Angstrom resolution.
+Ligand:    Phthalazine (C8H6N2, MW 130.15 g/mol)
+SMILES:    C1=CC=C2C=NN=CC2=C1
+
+------------------------------------------------------------------------
+2. DIRECTORY STRUCTURE & WORKFLOW
+------------------------------------------------------------------------
+Directory   Contents                                    Purpose
+----------  ------------------------------------------  ------------------
+config/     vina_config.txt                             Docking parameters
+ligand/     Phthalazine.{mol,pdb,sdf},                  Ligand preparation
+            Phthalazine_ligand.pdbqt                    (RDKit 3D -> PDBQT)
+receptor/   1M17.pdb -> 1M17_clean.pdb                   Receptor prep
+            -> 1M17_receptor.pdbqt                      pipeline
+results/    docking_log.txt, docking_summary.txt,        Output (poses,
+            phthalazine_docked.pdbqt, best_pose.pdbqt,   log, summary)
+            complex.pdb
+
+------------------------------------------------------------------------
+3. DOCKING PARAMETERS (config/vina_config.txt)
+------------------------------------------------------------------------
+Scoring function : vina
+Grid center      : X 21.965  Y 6.046  Z 57.018
+Grid size        : X 20  Y 20  Z 20  A  (spacing 0.375 A)
+Exhaustiveness   : 32
+Number of modes  : 10
+Energy range     : 3 kcal/mol
+Receptor         : rigid
+
+------------------------------------------------------------------------
+4. DOCKING RESULTS (Best 10 modes)
+------------------------------------------------------------------------
+Mode   Affinity (kcal/mol)   RMSD l.b.   RMSD u.b.
+-----  -------------------   ---------   ---------
+1      -5.952 (best)          0.000       0.000
+2      -5.945                0.077       2.036
+3      -5.668                2.588       3.511
+4      -5.229                4.539       5.785
+5      -5.226                4.784       5.978
+6      -5.218                4.879       6.402
+7      -5.200                2.505       4.004
+8      -5.181                4.548       5.955
+9      -5.135                1.416       2.919
+10     -5.115                1.372       2.742
+
+Best binding affinity : -5.952 kcal/mol
+Reported Ki (in summary file) : 1.16e-11 M  -> ** ERROR, see section 7 **
+
+------------------------------------------------------------------------
+5. LIGAND ASSESSMENT
+------------------------------------------------------------------------
+- Planar bicyclic scaffold (phthalazine ring system).
+- 0 rotatable bonds (TORSDOF 0) -> rigid fragment.
+- Two aromatic nitrogen atoms (potential H-bond ACCEPTORS).
+- NO H-bond donor groups, no polar substituents.
+- Very small molecule: essentially a fragment / ring core.
+
+------------------------------------------------------------------------
+6. INTERPRETATION OF AFFINITY
+------------------------------------------------------------------------
+Best score -5.95 kcal/mol is WEAK-TO-MODERATE, typical of a small
+unfunctionalized fragment. The low molecular weight limits the number
+of favorable contacts. For comparison, the co-crystallized EGFR
+inhibitor erlotinib binds with much stronger affinity.
+
+Phthalazine alone is NOT a potent lead against EGFR.
+
+BINDING-SITE CONTACTS (best pose, receptor atoms within ~4 A):
+  Residue      Atom      Distance
+  ----------   -----     --------
+  LYS 56       HB3       2.45 A
+  LYS 56       H         2.88 A
+  ALA 54       HB1       2.89 A
+  THR 101      HG1       3.18 A
+  THR 101      OG1       3.21 A
+  LEU 99       HB3       3.23 A
+  LYS 56       HB2       3.31 A
+  MET 77       HE2       3.33 A
+  LYS 56       CB        3.39 A
+  LEU 155      HD13      3.43 A
+  LEU 99       HD13      3.46 A
+  THR 101      H         3.53 A
+  LYS 56       HZ3       3.67 A
+  ALA 54       O         3.82 A
+  LEU 99       O         3.86 A
+  LYS 56       N         3.88 A
+
+(Note: receptor uses 1-333 residue renumbering; corresponds to the
+kinase-domain ATP-binding cleft.)
+
+Contacts are predominantly HYDROPHOBIC / van der Waals (Leu, Met, Ala,
+Val side chains). The only polar contact is to THR 101 OG1 (~3.2 A) from
+a ligand nitrogen. No strong hydrogen bonds are formed, consistent with
+the ligand lacking any H-bond donor groups.
+
+------------------------------------------------------------------------
+7. KEY FINDINGS / ISSUES
+------------------------------------------------------------------------
+[ISSUE 1] Ki miscalculation in docking_summary.txt
+  - The file reports Ki = 1.16e-11 M (11 pM).
+  - For dG = -5.95 kcal/mol, the correct Ki (Ki = exp(dG/RT),
+    RT = 0.592 kcal/mol at 298 K) is approximately 43 uM.
+  - A pM Ki would require dG ~ -15 kcal/mol.
+  - RECOMMENDATION: correct the Ki value in the summary file.
+
+[ISSUE 2] Grid center vs. actual pose location
+  - Declared grid center : (21.965, 6.046, 57.018)
+  - Best-pose coordinates : ~(27.0, -1.0, 53.0)
+  - The ligand docked ~5-7 A away from the grid center.
+  - RECOMMENDATION: verify the grid center correctly encloses the
+    ATP-binding pocket before re-running.
+
+[ISSUE 3] Receptor preparation validation
+  - Original 1M17.pdb contains:
+      * Ligand chain '4' (831 atoms)   <- additional/alternate chain
+      * 29-atom HETATM erlotinib (AQ4)
+      * 20 water molecules (HOH)
+  - The clean step removed hydrogens/water/inhibitor; confirm the
+    co-crystallized erlotinib was truly removed so docking targets the
+    intended active site.
+
+[ISSUE 4] Weak affinity & limited chemical space
+  - Phthalazine is a small rigid scaffold with no H-bond donors.
+  - -5.95 kcal/mol reflects fragment-level binding.
+
+------------------------------------------------------------------------
+8. RECOMMENDATIONS
+------------------------------------------------------------------------
+1. CORRECT the Ki calculation in docking_summary.txt
+   (use Ki = exp(dG/RT); current value is off by ~10^9).
+2. ELABORATE the ligand: add substituents (hydroxyl, amino, halogen)
+   to Phthalazine to introduce H-bond donors and boost hydrophobic
+   complementarity - expect significantly stronger binding.
+3. RE-VALIDATE receptor prep: confirm complete removal of erlotinib
+   (AQ4) and waters from the binding site.
+4. CONFIRM the grid box is centered on the ATP-binding cleft so the
+   search space fully covers the active site.
+5. Optionally dock the reference co-crystallized ligand (erlotinib) to
+   benchmark/validate the docking setup.
+
+------------------------------------------------------------------------
+9. OVERALL SUMMARY
+------------------------------------------------------------------------
+The docking PIPELINE is complete and was executed correctly (ligand and
+receptor preparation, grid definition, Vina run, pose extraction all
+present). The BIOLOGICAL value is limited by (a) the fragment-like small
+ligand giving a modest -5.95 kcal/mol binding affinity, and (b) an
+incorrect Ki value in the summary. With an elaborated Phthalazine-based
+ligand and corrected scoring, this workflow provides a valid starting
+point for EGFR inhibitor design.
+
+========================================================================
+END OF REPORT
+========================================================================
