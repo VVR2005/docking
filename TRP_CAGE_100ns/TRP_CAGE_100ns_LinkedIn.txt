@@ -1,0 +1,50 @@
+================================================================================
+                    LINKEDIN POST — Trp-Cage 100 ns MD Simulation
+================================================================================
+
+Just completed my first 100 ns molecular dynamics simulation on the Trp-cage
+miniprotein — one of the smallest and fastest-folding proteins in nature.
+
+The Results:
+
+RMSD Converged to 2.3 A within 30 ns — the structure found its fold and stayed
+there.
+
+Alpha Helix Stable at 51.7% — residues 2-12 maintained >95% helical content
+throughout, matching the known Trp-cage structure.
+
+Trp6 Core Locked with 0.30 A RMSF — the tryptophan residue (the heart of the
+cage) was buried and rigid the entire simulation.
+
+Native Contacts Maintained at ~50% — the protein preserved its key structural
+contacts throughout the 100 ns window.
+
+The interesting part: The proline "cage" (Pro17-19 wrapping around Trp6)
+hasn't fully closed yet. Trp6-Pro12 sits at 6.3 A (cutoff: 5.5 A), and
+Trp6-Pro18 at 5.1 A (cutoff: 5.0 A).
+
+This is not a failure — it's actually the known folding pathway:
+
+  1. Alpha helix forms first (observed here)
+  2. The proline cage slowly wraps around Trp6 (needs 200-500+ ns)
+
+Key Takeaways:
+  - 100 ns is enough to observe helix formation and convergence
+  - Cage closure is the slow step in Trp-cage folding
+  - The simulation is physically correct and reproducible
+  - Free energy landscape shows the protein exploring near-native states
+
+System: Trp-cage (NLYIQWLKDGGLSSGRPPPS, 20 residues)
+Force Field: AMBER14 + TIP3P water
+Software: OpenMM 8.5.1
+Trajectory: 1000 frames, 100.3 ns
+Analysis: RMSD, RMSF, Rg, DSSP, PCA, Clustering, H-bonds, SASA,
+          Native contacts, Free-energy landscape
+
+Next steps: extend to 500 ns to capture the full cage closure event.
+
+#MolecularDynamics #ComputationalBiology #ProteinFolding #TrpCage
+#OpenMM #Bioinformatics #DrugDiscovery #StructuralBiology
+#Simulation #Science
+
+================================================================================

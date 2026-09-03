@@ -1,0 +1,35 @@
+# Images
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+frames_*/
+PROTEIN_500FRAMES/
+frames/
+
+# MD trajectories
+*.xtc
+*.trr
+*.edr
+*.cpt
+*.chk
+*.dcd
+*.nc
+
+# Videos
+*.mp4
+*.avi
+
+# Large archives
+*.zip
+*.tar.gz
+*.7z
+
+# Python objects
+*.pkl
+*.npy
+__pycache__/
+
+# ChimeraX sessions (uploaded as release assets)
+*.cxs

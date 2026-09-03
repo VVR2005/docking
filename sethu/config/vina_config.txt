@@ -1,0 +1,16 @@
+receptor = /home/vr/Documents/docking/sethu/receptor/1M17_receptor.pdbqt
+ligand = /home/vr/Documents/docking/sethu/ligand/Phthalazine_ligand.pdbqt
+
+center_x = 21.965
+center_y = 6.046
+center_z = 57.018
+
+size_x = 20
+size_y = 20
+size_z = 20
+
+exhaustiveness = 32
+num_modes = 10
+energy_range = 3
+
+out = /home/vr/Documents/docking/sethu/results/phthalazine_docked.pdbqt

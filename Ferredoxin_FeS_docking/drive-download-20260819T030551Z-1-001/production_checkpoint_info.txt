@@ -1,0 +1,3 @@
+Step: 250000
+Percent Complete: 100%
+Potential Energy: -105885.22188017616 kJ/mol

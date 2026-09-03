@@ -1,0 +1,24 @@
+PHTHALAZINE DOCKING RESULTS AGAINST EGFR (PDB: 1M17)
+=================================================================
+
+Protein:  Human EGFR Kinase Domain (PDB: 1M17)
+Ligand:   Phthalazine (C8H6N2, MW: 130.15 g/mol)
+SMILES:   C1=CC=C2C=NN=CC2=C1
+Method:   AutoDock Vina 1.2.7
+Grid:     Center (21.965, 6.046, 57.018), Size 20x20x20 A
+
+Mode    Affinity          RMSD l.b.   RMSD u.b.   
+--------------------------------------------------
+1       -5.952            0.000       0.000       
+2       -5.945            0.077       2.036       
+3       -5.668            2.588       3.511       
+4       -5.229            4.539       5.785       
+5       -5.226            4.784       5.978       
+6       -5.218            4.879       6.402       
+7       -5.200            2.505       4.004       
+8       -5.181            4.548       5.955       
+9       -5.135            1.416       2.919       
+10      -5.115            1.372       2.742       
+
+Best binding affinity: -5.952 kcal/mol
+Estimated Ki: 1.16e-11 M (0.00 uM)

@@ -1,0 +1,148 @@
+
+       _______________________________________________________
+
+__________//____________________________/////_________________/________
+_________/__/____________/_____________/______________/_______/________
+________/____/___________/_____________/______________________/________
+________/____/__/_____/_/////___/////__/__////_/_///__/__////_/________
+_______/______/_/_____/__/_____/_____/_/_____/_//___/_/_/____//________
+_______////////_/_____/__/_____/_____/_/_____/_/______/_/_____/________
+_______/______/_/____//__/___/_/_____/_/_____/_/______/_/____//________
+_______/______/__////_/___///___/////___/////__/______/__////_/________
+
+       _______________________________________________________
+
+                                ______
+                               /      \
+                              /        \
+                             /          \
+                             \    /\    /
+                              \  /  \  /
+                               \/ /\ \/
+                                 /  \
+                                /____\
+
+
+                ______________________________________ 
+               |                                      |
+               |            AutoGrid 4.2.8            |
+               |                                      |
+               |        Garrett M. Morris, TSRI       |
+               |            Ruth Huey, TSRI           |
+               |        David S. Goodsell, TSRI       |
+               |         Arthur J. Olson, TSRI        |
+               |                                      |
+               |        (C) 1989-2020, TSRI           |
+               |   The Scripps Research Institute     |
+               |______________________________________|
+
+                ______________________________________ 
+               |                                      |
+               | Calculation of van der Waals, H-Bond,|
+               |   Electrostatic Potential Energy, &  |
+               |   Desolvation Free Energy Grid Maps  |
+               |             for AutoDock             |
+               | For help, email autodock@scripps.edu |
+               |______________________________________|
+
+
+
+
+                           $Revision: 1.160 $
+Compilation parameters:  NUM_RECEPTOR_TYPES=20 NEINT=1024
+  AG_MAX_ATOMS=100000  AG_MAX_NBONDS=4 MAX_MAPS=128 NDIEL=8192 MAX_ATOM_TYPES=126
+        e_vdW_Hb table allows    15876 entries of size 1024
+Maximum number of maps that can be computed = 128 (defined by MAX_MAPS in "autocomm.h").
+  Non-bond cutoff for internal energy calculation (SOFTNBC): 8.00
+  Optimize internal energy scoring (USE_8A_NBCUTOFF):  yes
+  Faster search for nearby atoms (USE_BHTREE):  no
+  Run calculations in parallel if possible (_OPENMP):  yes
+  Maximum number of parallel threads (MAXTHREADS): 32
+This file was created at:			8:24 24" a.m., 08/10/2026
+                   using:			"archlinux"
+
+
+GPF> # AD4 grid maps for Vina --scoring ad4
+GPF> npts 54 54 54
+
+Number of grid points in x-direction:	55
+Number of grid points in y-direction:	55
+Number of grid points in z-direction:	55
+
+GPF> gridfld receptor.maps.fld
+
+Creating (AVS-readable) grid maps file : receptor.maps.fld
+
+Creating (AVS-readable) grid-coordinates extrema file : receptor.maps.xyz
+
+GPF> spacing 0.375
+Grid Spacing :			0.375 Angstrom
+
+GPF> receptor_types A C N NA OA HD
+GPF> ligand_types A C N HD
+0 'A' ->'A' vdW/Hb/cov
+1 'C' ->'C' vdW/Hb/cov
+2 'N' ->'N' vdW/Hb/cov
+3 'HD' ->'HD' vdW/Hb/cov
+Allocated space for 6 gridmap objects
+4 CPU threads will be used for calculation
+
+Atom type names for ligand atom types 1-4 used for ligand-atom affinity grid maps:
+
+			Atom type number 1 corresponds to atom type name "A".
+			Atom type number 2 corresponds to atom type name "C".
+			Atom type number 3 corresponds to atom type name "N".
+			Atom type number 4 corresponds to atom type name "HD".
+
+
+GPF> gridcenter -1.75 -14.74 -16.92
+
+Grid maps will be centered on user-defined coordinates:
+
+		(-1.750, -14.740, -16.920)
+
+Grid maps will cover the following volume:
+
+                   _______(8.4, -4.6, -6.8)
+                  /|     /|
+                 / |    / |
+                /______/  |
+                |  |___|__| Midpoint = (-1.8, -14.7, -16.9)
+                |  /   |  /
+                | /    | /
+                |/_____|/
+(-11.9, -24.9, -27.0)      
+
+Grid map x-dimension :		20.2 Angstroms
+Grid map y-dimension :		20.2 Angstroms
+Grid map z-dimension :		20.2 Angstroms
+
+Maximum coordinates :		(8.375, -4.615, -6.795)
+Minimum coordinates :		(-11.875, -24.865, -27.045)
+
+GPF> A map receptor.A.map
+
+/home/timeshift/snapshots/2026-04-17_19-18-17/localhost/usr/bin/autogrid4: WARNING:  Unrecognized keyword in grid parameter file.
+
+
+GPF> C map receptor.C.map
+
+/home/timeshift/snapshots/2026-04-17_19-18-17/localhost/usr/bin/autogrid4: WARNING:  Unrecognized keyword in grid parameter file.
+
+
+GPF> N map receptor.N.map
+
+/home/timeshift/snapshots/2026-04-17_19-18-17/localhost/usr/bin/autogrid4: WARNING:  Unrecognized keyword in grid parameter file.
+
+
+GPF> HD map receptor.HD.map
+
+/home/timeshift/snapshots/2026-04-17_19-18-17/localhost/usr/bin/autogrid4: WARNING:  Unrecognized keyword in grid parameter file.
+
+
+GPF> elecmap receptor.e.map
+
+/home/timeshift/snapshots/2026-04-17_19-18-17/localhost/usr/bin/autogrid4: ERROR:  "elecmap" request appeared before all atom map requests had appeared.
+
+
+/home/timeshift/snapshots/2026-04-17_19-18-17/localhost/usr/bin/autogrid4: Unsuccessful Completion.
